@@ -22,6 +22,7 @@ class getData extends React.Component {
 		super();
 		this.state = {
 			"nameTextField": "", // This is where the content for the TextField used below is stored 
+			"HeartRateTimes": [],
 			"HeartRateMeasurements": []
 		}
 	}
@@ -39,14 +40,25 @@ class getData extends React.Component {
 
 		var URL = "http://vcm-3579.vm.duke.edu:5000/api/heart_rate/" + this.state.nameTextField
 		axios.get(URL).then( (response) => {
-			console.log('hello')
-			console.log(response.status);
 			// logs status
 			console.log(this.state.nameTextField)
 			// logs email
 			console.log(response.data);
 			// logs response based on email
 			this.setState({"HeartRateMeasurements": JSON.stringify(response.data)});
+		})	
+	}
+
+	getTimes = () => {
+
+		var URL = "http://vcm-3579.vm.duke.edu:5000/api/heart_rate_times/" + this.state.nameTextField
+		axios.get(URL).then( (response) => {
+			// logs status
+			console.log(this.state.nameTextField)
+			// logs email
+			console.log(response.data);
+			// logs response based on email
+			this.setState({"HeartRateTimes": JSON.stringify(response.data)});
 		})	
 	}
 
@@ -69,8 +81,16 @@ class getData extends React.Component {
 					Obtains data
 				</Button>
 
+				<Button onClick={this.getTimes}>
+					Obtains times
+				</Button>
+
 				<div style={styles.dataStyle}>
 					{this.state.HeartRateMeasurements}
+				</div>
+
+				<div style={styles.dataStyle}>
+					{this.state.HeartRateTimes}
 				</div>
 
 			</div>
@@ -79,4 +99,5 @@ class getData extends React.Component {
 }
 
 export default getData;
+
 
