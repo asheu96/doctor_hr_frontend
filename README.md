@@ -14,3 +14,7 @@ npm start
 
 in order to start the reactjs file
 
+# Frontend UI
+Below is an image of what the frontend server should look like
+
+[![react_screenshot.jpg](https://s17.postimg.cc/gg6t7kw8v/react_screenshot.jpg)](https://postimg.cc/image/t7kze360r/)
